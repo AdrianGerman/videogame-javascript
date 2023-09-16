@@ -17,7 +17,7 @@ function setCanvasSize() {
   canvas.setAttribute("width", canvasSize);
   canvas.setAttribute("height", canvasSize);
 
-  elementsSize = canvasSize / 10 - 1;
+  elementsSize = canvasSize / 10;
   startGame();
 }
 
@@ -25,9 +25,13 @@ function startGame() {
   console.log({ canvasSize, elementsSize });
 
   game.font = elementsSize + "px Verdana";
-  game.textAlign = "";
+  game.textAlign = "center";
+  // game.textBaseline = "middle";
 
-  for (let i = 0; i <= 9; i++) {
-    game.fillText(emojis["X"], elementsSize * i, elementsSize);
+  for (let i = 1; i <= 10; i++) {
+    // for (let j = 1; j <= 10; j++) {
+    game.fillText(emojis["X"], elementsSize * (i - 1 / 2), elementsSize);
   }
 }
+// }
+// * (j - 1 / 2)
