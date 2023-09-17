@@ -61,6 +61,15 @@ btnRight.addEventListener("click", moveRight);
 btnDown.addEventListener("click", moveDown);
 
 function moveByKeys(event) {
+  if (event.key == "ArrowUp") moveUp();
+  else if (event.key == "ArrowLeft") moveLeft();
+  else if (event.key == "ArrowRight") moveRight();
+  else if (event.key == "ArrowDown") moveDown();
+  else if (event.key == "w") moveUp();
+  else if (event.key == "a") moveLeft();
+  else if (event.key == "d") moveRight();
+  else if (event.key == "s") moveDown();
+  // console.log(event);
   // if (event.key == "ArrowUp") {
   //   moveUp();
   // } else if (event.key == "ArrowLeft") {
@@ -70,10 +79,6 @@ function moveByKeys(event) {
   // } else if (event.key == "ArrowDown") {
   //   moveDown();
   // }
-  if (event.key == "ArrowUp") moveUp();
-  else if (event.key == "ArrowLeft") moveLeft();
-  else if (event.key == "ArrowRight") moveRight();
-  else if (event.key == "ArrowDown") moveDown();
 }
 
 function moveUp() {
