@@ -61,15 +61,19 @@ btnRight.addEventListener("click", moveRight);
 btnDown.addEventListener("click", moveDown);
 
 function moveByKeys(event) {
-  if (event.key == "ArrowUp") {
-    moveUp();
-  } else if (event.key == "ArrowLeft") {
-    moveLeft();
-  } else if (event.key == "ArrowRight") {
-    moveRight();
-  } else if (event.key == "ArrowDown") {
-    moveDown();
-  }
+  // if (event.key == "ArrowUp") {
+  //   moveUp();
+  // } else if (event.key == "ArrowLeft") {
+  //   moveLeft();
+  // } else if (event.key == "ArrowRight") {
+  //   moveRight();
+  // } else if (event.key == "ArrowDown") {
+  //   moveDown();
+  // }
+  if (event.key == "ArrowUp") moveUp();
+  else if (event.key == "ArrowLeft") moveLeft();
+  else if (event.key == "ArrowRight") moveRight();
+  else if (event.key == "ArrowDown") moveDown();
 }
 
 function moveUp() {
