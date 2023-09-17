@@ -26,12 +26,22 @@ function startGame() {
 
   game.font = elementsSize + "px Verdana";
   game.textAlign = "center";
-  // game.textBaseline = "middle";
+  game.textBaseline = "middle";
 
-  for (let i = 1; i <= 10; i++) {
-    // for (let j = 1; j <= 10; j++) {
-    game.fillText(emojis["X"], elementsSize * (i - 1 / 2), elementsSize);
+  const map = maps[0];
+  const mapRows = map.trim().split("\n");
+  const mapRowsCols = mapRows.map(row => row.trim().split(""));
+  console.log({ map, mapRows, mapRowsCols });
+
+
+
+  for (let row = 1; row <= 10; row++) {
+    for (let col = 1; col <= 10; col++) {
+      game.fillText(emojis[mapRowsCols[row - 1][col - 1]], elementsSize * (col - 1 / 2), elementsSize * (row - 1 / 2));
+    }
   }
 }
+// for (let j = 1; j <= 10; j++) {
+
 // }
 // * (j - 1 / 2)
