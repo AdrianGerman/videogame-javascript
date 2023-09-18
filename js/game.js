@@ -102,7 +102,7 @@ function moveByKeys(event) {
 }
 
 function moveUp() {
-  console.log("Me quiero mover hacia arriba");
+  // console.log("Me quiero mover hacia arriba");
   if (playerPosition.y - elementsSize < 0) {
     // en vez de 0 se deberia poner elementSize, pero mi canvas esta modificado
     console.log("Auch!");
@@ -113,7 +113,7 @@ function moveUp() {
 }
 
 function moveLeft() {
-  console.log("Me quiero mover hacia la izquierda");
+  // console.log("Me quiero mover hacia la izquierda");
   if (playerPosition.x - elementsSize < 0) {
     console.log("Auch!");
   } else {
@@ -123,7 +123,7 @@ function moveLeft() {
 }
 
 function moveRight() {
-  console.log("Me quiero mover hacia la derecha");
+  // console.log("Me quiero mover hacia la derecha");
   if (playerPosition.x + elementsSize > canvasSize) {
     console.log("Auch!");
   } else {
@@ -133,7 +133,7 @@ function moveRight() {
 }
 
 function moveDown() {
-  console.log("Me quiero mover hacia abajo");
+  // console.log("Me quiero mover hacia abajo");
   if (playerPosition.y + elementsSize > canvasSize) {
     console.log("Auch!");
   } else {
