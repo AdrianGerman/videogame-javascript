@@ -31,7 +31,7 @@ function setCanvasSize() {
 }
 
 function startGame() {
-  console.log({ canvasSize, elementsSize });
+  // console.log({ canvasSize, elementsSize });
 
   game.font = elementsSize + "px Verdana";
   game.textAlign = "center";
@@ -53,7 +53,7 @@ function startGame() {
         if (!playerPosition.x && !playerPosition.y) {
           playerPosition.x = posX;
           playerPosition.y = posY;
-          console.log({ playerPosition });
+          // console.log({ playerPosition });
         }
       }
 
@@ -103,24 +103,41 @@ function moveByKeys(event) {
 
 function moveUp() {
   console.log("Me quiero mover hacia arriba");
-  playerPosition.y -= elementsSize;
-  startGame();
+  if (playerPosition.y - elementsSize < 0) {
+    // en vez de 0 se deberia poner elementSize, pero mi canvas esta modificado
+    console.log("Auch!");
+  } else {
+    playerPosition.y -= elementsSize;
+    startGame();
+  }
 }
 
 function moveLeft() {
   console.log("Me quiero mover hacia la izquierda");
-  playerPosition.x -= elementsSize;
-  startGame();
+  if (playerPosition.x - elementsSize < 0) {
+    console.log("Auch!");
+  } else {
+    playerPosition.x -= elementsSize;
+    startGame();
+  }
 }
 
 function moveRight() {
   console.log("Me quiero mover hacia la derecha");
-  playerPosition.x += elementsSize;
-  startGame();
+  if (playerPosition.x + elementsSize > canvasSize) {
+    console.log("Auch!");
+  } else {
+    playerPosition.x += elementsSize;
+    startGame();
+  }
 }
 
 function moveDown() {
   console.log("Me quiero mover hacia abajo");
-  playerPosition.y += elementsSize;
-  startGame();
+  if (playerPosition.y + elementsSize > canvasSize) {
+    console.log("Auch!");
+  } else {
+    playerPosition.y += elementsSize;
+    startGame();
+  }
 }
