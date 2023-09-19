@@ -6,6 +6,8 @@ const btnRight = document.querySelector("#right");
 const btnDown = document.querySelector("#down");
 const spanLives = document.querySelector("#lives");
 const spanTime = document.querySelector("#time");
+const spanRecord = document.querySelector("#result");
+const pResult = document.querySelector("#result");
 
 let canvasSize;
 let elementsSize;
@@ -61,6 +63,7 @@ function startGame() {
   if (!timeStart) {
     timeStart = Date.now();
     timeInterval = setInterval(showTime, 100);
+    showRecord();
   }
   const mapRows = map.trim().split("\n");
   const mapRowsCols = mapRows.map((row) => row.trim().split(""));
@@ -142,6 +145,23 @@ function levelWin() {
 function gameWin() {
   console.log("HAS GANADO PELOTUDO!");
   clearInterval(timeInterval);
+
+  const recordTime = localStorage.getItem("record_time");
+  const playerTime = Date.now() - timeStart;
+
+  if (recordTime) {
+    if (recordTime >= playerTime) {
+      localStorage.setItem("record_time", playerTime);
+      pResult.innerHTML = "¡¡Felicidades!! Has superado el récord ";
+    } else {
+      pResult.innerHTML = "Lo siento, no has superado el récord :l";
+      console.log({ playerTime });
+    }
+  } else {
+    localStorage.setItem("record_time", playerTime);
+    pResult.innerHTML = "Muy bien, ahora intenta superar este récord";
+  }
+  // console.log({ recordTime, playerTime });
 }
 
 function levelFail() {
@@ -168,6 +188,10 @@ function showLives() {
 
 function showTime() {
   spanTime.innerHTML = formatTime(Date.now() - timeStart);
+}
+
+function showRecord() {
+  spanRecord.innerHTML = formatTime(localStorage.getItem("record_time"));
 }
 
 function formatTime(ms) {
