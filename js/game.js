@@ -7,6 +7,7 @@ const btnDown = document.querySelector("#down");
 
 let canvasSize;
 let elementsSize;
+let level = 0;
 
 const playerPosition = {
   x: undefined,
@@ -44,7 +45,11 @@ function startGame() {
   game.textAlign = "center";
   game.textBaseline = "middle";
 
-  const map = maps[0];
+  const map = maps[level];
+  if (!map) {
+    gameWin();
+    return;
+  }
   const mapRows = map.trim().split("\n");
   const mapRowsCols = mapRows.map((row) => row.trim().split(""));
   // console.log({ map, mapRows, mapRowsCols });
@@ -95,7 +100,7 @@ function movePlayer() {
   const giftCollision = giftCollisionX && giftCollisionY;
 
   if (giftCollision) {
-    console.log("Subiste de nivel");
+    levelWin();
   }
 
   const enemyCollision = enemyPosition.find((enemy) => {
@@ -109,6 +114,16 @@ function movePlayer() {
   }
 
   game.fillText(emojis["PLAYER"], playerPosition.x, playerPosition.y);
+}
+
+function levelWin() {
+  console.log("Subiste de nivel");
+  level++;
+  startGame();
+}
+
+function gameWin() {
+  console.log("HAS GANADO PELOTUDO!");
 }
 
 window.addEventListener("keydown", moveByKeys);
