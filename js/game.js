@@ -108,6 +108,7 @@ function startGame() {
   });
 
   movePlayer();
+
   // for (let row = 1; row <= 10; row++) {
   //   for (let col = 1; col <= 10; col++) {
   //     game.fillText(emojis[mapRowsCols[row - 1][col - 1]], elementsSize * (col - 1 / 2), elementsSize * (row - 1 / 2));
@@ -144,6 +145,9 @@ function movePlayer() {
 function levelWin() {
   // console.log("Subiste de nivel");
   level++;
+  // resetea
+  playerPosition.x = undefined;
+  playerPosition.y = undefined;
   startGame();
 }
 
