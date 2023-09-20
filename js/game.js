@@ -6,7 +6,7 @@ const btnRight = document.querySelector("#right");
 const btnDown = document.querySelector("#down");
 const spanLives = document.querySelector("#lives");
 const spanTime = document.querySelector("#time");
-const spanRecord = document.querySelector("#result");
+const spanRecord = document.querySelector("#record");
 const pResult = document.querySelector("#result");
 
 let canvasSize;
@@ -35,15 +35,20 @@ window.addEventListener("resize", setCanvasSize);
 
 function setCanvasSize() {
   if (window.innerHeight > window.innerWidth) {
-    canvasSize = window.innerWidth * 0.8;
+    canvasSize = window.innerWidth * 0.7;
   } else {
-    canvasSize = window.innerHeight * 0.8;
+    canvasSize = window.innerHeight * 0.7;
   }
+
+  canvasSize = Number(canvasSize.toFixed(0));
 
   canvas.setAttribute("width", canvasSize);
   canvas.setAttribute("height", canvasSize);
 
   elementsSize = canvasSize / 10;
+
+  playerPosition.x = undefined;
+  playerPosition.y = undefined;
   startGame();
 }
 
@@ -161,7 +166,7 @@ function gameWin() {
     localStorage.setItem("record_time", playerTime);
     pResult.innerHTML = "Muy bien, ahora intenta superar este récord";
   }
-  // console.log({ recordTime, playerTime });
+  console.log({ recordTime, playerTime });
 }
 
 function levelFail() {
